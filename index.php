@@ -3,7 +3,7 @@ require "libraries/connectDB.php";
 ?>
 <html>
     <head>
-        <title>Online Store - Templete</title>
+        <title>Online Store - Homepage</title>
         <link rel="stylesheet" href="ui/online_store.css">
     </head>
     <body>
