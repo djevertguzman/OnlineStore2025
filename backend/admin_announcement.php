@@ -8,7 +8,6 @@ require "libraries/connectDB.php";
     </head>
     <body>
         <?php include "navigation/guest_nav.php";?>
-        <h2>This is a blank template, modify me to start</h2>
 
     </body>
 </html>
