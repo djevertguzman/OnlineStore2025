@@ -1,5 +1,6 @@
 <?php
 require "libraries/connectDB.php";
+include "libraries/products.php";
 ?>
 <html>
     <head>
@@ -7,8 +8,10 @@ require "libraries/connectDB.php";
         <link rel="stylesheet" href="ui/online_store.css">
     </head>
     <body>
-        <?php include "navigation/guest_nav.php";?>
-        <h2>This is a blank template, modify me to start</h2>
+        <?php
+        include "navigation/guest_nav.php";
+        displayProduct($dbc);
+        ?>
 
     </body>
 </html>
