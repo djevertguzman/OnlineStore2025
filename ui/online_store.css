@@ -19,6 +19,9 @@
     margin-right: auto;
     width: fit-content;
 }
+.productTable h2{
+    text-align: center;
+}
 
 .productTable table th {
     background-color: Green;
@@ -39,4 +42,7 @@
 
 .error {
     color: #FF0000;
+}
+.success{
+    color: limegreen;
 }

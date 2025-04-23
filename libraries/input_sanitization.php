@@ -10,7 +10,7 @@ function test_input($data)
 function uploadFile($tagName, $filesAllowed, $sizeAllowed, $overWriteAllowed)
 {
     $uploadOK = 1;
-    $dir = "upload/";
+    $dir = "../store/item_picture/";
     $file = $dir . basename($_FILES[$tagName]["name"]);
     $fileType = pathinfo($file, PATHINFO_EXTENSION);
     $fileSize = $_FILES[$tagName]["size"];

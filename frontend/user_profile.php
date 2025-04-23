@@ -17,7 +17,7 @@ $email = "example@example.com";
 $flag = 0; //no flag means ready to insert
 //echo "Conained in SESSION ID: ".$_SESSION['ID']."<br>";
 //print_r($_SESSION);
-echo "<br>";
+//echo "<br>";
 if (isset($_SESSION["ID"])) {
     $usrID = $_SESSION["ID"];
     $SQS = "SELECT * FROM User WHERE ID='$usrID'";
