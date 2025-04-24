@@ -23,12 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel="stylesheet" href="../ui/online_store.css">
     </head>
     <body>
-        <?php include "navigation/guest_nav.php";?>
+        <?php include "../navigation/guest_nav.php";?>
+        <div class="usrForm">
         <h2>If you have forgotten your password. Enter your email below, and follow the instructions.</h2>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         Email: <input type="text" name="email" value="<?php echo $email; ?>"> <span class="error"> * <?php echo $emailErr; ?></span><br><br>
         <input type="submit">
         </form>
+    </div>
 
     </body>
 </html>

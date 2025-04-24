@@ -23,7 +23,7 @@ function userAuthPASS($dbc, $expire)
             setcookie("passwd", $pw, $expire, "/");
             mysqli_close($dbc);
             if ($user_type == 0) {
-                header("Location:../backend/admin_list_items.php");
+                header("Location:../backend/admin_home.php");
             } else {
                 header("Location:../frontend/user_home.php");
             }

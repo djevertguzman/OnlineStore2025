@@ -66,15 +66,17 @@ if(isset($_POST["purchase"])){
 
 <body>
     <?php include "../navigation/user_nav.php";
+    echo "<div class='productTable'>";
     if (isset($_SESSION["cart_id"])) {
         require "../libraries/render_cart.php";
         $cartUUID = $_SESSION["cart_id"];
         renderCart($dbc,$cartUUID);
         
     } else {
-        echo "<h1>There is nothing in your cart, <a href='./user_product.php' alt='Link back to product page'>Click Here to change that.</a></h1>";
+        echo "<br><br><h1>There is nothing in your cart, <a href='./user_product.php' alt='Link back to product page'>Click Here </a> to change that.</h1>";
     }
     echo $orderStatus;
+    echo "</div>";
     ?>
 
 

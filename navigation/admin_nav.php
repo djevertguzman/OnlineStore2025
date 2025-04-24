@@ -5,10 +5,13 @@ echo "
 <div class='navbar'>
 <table>
 <tr>
-<th><a href='../index.php' alt='Main Home'>Home</a></th>
-<th><a href='../index.php' alt='Product Page'>Products</th>
-<th><a href='../index.php' alt='Product Search'>Product Search</a></th>
-<th><a href='../index.php' alt='Login Page'>Login</a></th>
+<th><a href='./admin_home.php' alt='Main Home'>Home</a></th>
+<th><a href='./admin_list_items.php' alt='Listed Items page'>Listed Items</th>
+<th><a href='./admin_transactions.php' alt='Listings that have completed'>Recent Transactions</a></th>
+<th><a href='./admin_users.php' alt='Manage Users Page'>Manage Users</th>
+<th><a href='./admin_announcement.php' alt='Create Announcement'>Manage Announcement</th>
+<th><a href='../frontend/user_home.php' alt='Switch To User Mode'>User Mode</a></th>
+<th><a href='../user_auth/logoff.php' alt='Logoff'>Logoff</a></th>
 </tr>
 </table>
 </div>

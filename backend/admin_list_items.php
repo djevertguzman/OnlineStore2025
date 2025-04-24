@@ -1,13 +1,24 @@
 <?php
-require "libraries/connectDB.php";
+require "../libraries/connectDB.php";
+require "../user_auth/admin_lib/admin_chk.php";
+require "../libraries/admin_lib/admin_display.php";
+session_start();
+$usrID = $_SESSION["ID"];
+if(checkAdmin($dbc,$usrID)){
+    echo "<h2>Admin chk good Continue</h2>";
+}else{
+    echo "<h1>GTFO</h1>";
+}
 ?>
 <html>
     <head>
         <title>Online Store - Templete</title>
-        <link rel="stylesheet" href="ui/online_store.css">
+        <link rel="stylesheet" href="../ui/online_store.css">
     </head>
     <body>
-        <?php include "navigation/guest_nav.php";?>
+        <?php include "../navigation/admin_nav.php";
+        displayItems($dbc);
+        ?>
 
     </body>
 </html>

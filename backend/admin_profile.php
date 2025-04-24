@@ -1,14 +1,21 @@
 <?php
-require "libraries/connectDB.php";
+require "../libraries/connectDB.php";
+require "../user_auth/admin_lib/admin_chk.php";
+session_start();
+$usrID = $_SESSION["ID"];
+if(checkAdmin($dbc,$usrID)){
+    echo "<h2>Admin chk good Continue</h2>";
+}else{
+    echo "<h1>GTFO</h1>";
+}
 ?>
 <html>
     <head>
-        <title>Online Store - Templete</title>
-        <link rel="stylesheet" href="ui/online_store.css">
+        <title>Online Store - Admin Profile</title>
+        <link rel="stylesheet" href="../ui/online_store.css">
     </head>
     <body>
-        <?php include "navigation/guest_nav.php";?>
-        <h2>This is a blank template, modify me to start</h2>
+        <?php include "../navigation/admin_nav.php";?>
 
     </body>
 </html>

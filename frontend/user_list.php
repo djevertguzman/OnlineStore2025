@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //print_r($_POST);
     //print_r($_FILES);
     //All of this is related to picture upload.
-    if (isset($_FILES["itmPIC"])) {
+    /*if (isset($_FILES["itmPIC"])) {
         //upload image
         $tagName = "itemPIC";
         $filesAllowed = "PNG:JPEG:JPG:GIF:BMP";
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $itemPictureErr = "Picture of the item you are trying to sell is required.";
         $flag = 1;
-    }
+    }*/
     //End of picture upload.
     if (!isset($itemName)) {
         $itemNameErr = "Name of the item is required.";
