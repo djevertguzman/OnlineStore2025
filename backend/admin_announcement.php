@@ -5,7 +5,7 @@ session_start();
 $success = "";
 $usrID = $_SESSION["ID"];
 if(checkAdmin($dbc)){
-    echo "Canary 1: PostArray:<br>";
+    //echo "Canary 1: PostArray:<br>";
     print_r($_POST);
     if(isset($_POST["comment"])){
         echo "Canary 2";

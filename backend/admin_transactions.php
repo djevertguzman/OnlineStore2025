@@ -8,7 +8,7 @@ $usrID = $_SESSION["ID"];
 $range = "";
 $sqs = "";
 if (checkAdmin($dbc, $usrID)) {
-    echo "<h2>Admin chk good Continue</h2>";
+    //echo "<h2>Admin chk good Continue</h2>";
     $range = "seven";
     $sqs = "SELECT 
     T.transact_id,
@@ -44,7 +44,7 @@ if (checkAdmin($dbc, $usrID)) {
         }
     }
 } else {
-    echo "<h1>GTFO</h1>";
+    echo "<h1>Go Away</h1>";
 }
 ?>
 <html>
