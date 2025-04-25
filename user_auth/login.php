@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-        <?php include "../../OnlineStore/navigation/guest_nav.php";?>
+        <?php include "guest_nav.php";?>
         <div class="usrLogin">
     <p>If your a new user <a href="registration.php">click here</a> to sign up.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">

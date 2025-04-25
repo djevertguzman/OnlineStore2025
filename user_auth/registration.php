@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_query($dbc, $sis);
             //$regcompl = mysqli_affected_rows($dbc);
             //echo $regcompl . " User information has been stored sucessfully!";
-            //header("Location:success.php");
+            header("Location:success.php");
         }
     }
 }
@@ -121,7 +121,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include "../navigation/guest_nav.php"; ?>
+    <?php include "guest_nav.php"; ?>
+    <div class="usrFORM">
     <h2>Registration Form</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         First name: <input type="text" name="firstname" value="<?php echo $firstname; ?>"> <span class="error">* <?php echo $firstnameErr; ?></span><br><br>
@@ -144,6 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit">
     </form>
+    </div>
     <?php
     //echo "<hr><h3>Testing Area: For Developer Only </h3>";
     //echo "Data collected from the form: <br>";

@@ -15,15 +15,18 @@
     text-align: center;
     padding: 10px;
 }
-.productTable{
+
+.productTable {
     text-align: center;
 }
+
 .productTable table {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
 }
-.productTable h2{
+
+.productTable h2 {
     text-align: center;
 }
 
@@ -38,11 +41,13 @@
     margin-right: 20%;
     margin-top: 5%
 }
+
 .textArea table {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
 }
+
 .textArea table th {
     background-color: #F1FFFA;
     color: black;
@@ -55,23 +60,27 @@
     margin-right: 20%;
     background-color: white;
     color: black;
-    padding: 40px; border: 1px solid black;
+    padding: 40px;
+    border: 1px solid black;
 }
 
 .error {
     color: #FF0000;
 }
-.success{
+
+.success {
     color: limegreen;
 }
+
 body {
     background-color: #654F6F;
     color: white;
-  }
-  .usrLogin{
+}
+
+.usrLogin {
     text-align: center;
     margin-left: 40%;
     margin-right: 40%;
     margin-top: 7%;
     width: fit-content;
-  }
+}

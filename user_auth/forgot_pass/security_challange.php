@@ -1,31 +1,43 @@
 <?php
 require "../../../OnlineStore/libraries/connectDB.php";
 require "../../../OnlineStore/libraries/input_sanitization.php";
+session_start();
 $question = $answer = "";
+if (isset($_SESSION["attRemain"])) {
+    $attStatus = $_SESSION["attRemain"];
+} else {
+    $attStatus = 3;
+}
 $_SESSION["challangePass"] = 0;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $usranswer = strtolower(str_replace(' ', '',test_input($_POST["usrans"])));
+//print_r($_SESSION);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //echo "<br>IN POST<br>";
+    //print_r($_POST);
+    $usrID = $_SESSION["forgotID"];
+    $usranswer = strtolower(str_replace(' ', '', test_input($_POST["usrans"])));
     $dbans = $_SESSION["dbans"];
-    if(levenshtein($usranswer, $dbans) <= 2){
+    //echo "<br>USRANS: " . $usranswer . "DBANS: " . $dbans . "<br>";
+    if (levenshtein($usranswer, $dbans) <= 2) {
         $_SESSION["challangePass"] = 1;
+        session_unset($_SESSION["attRemain"]);
         header("Location:password_change.php");
-    }else{
+    } else {
         $attStatus = $_SESSION["attRemain"];
         $_SESSION["attRemain"] -= 1;
-        if($_SESSION["attRemain"] == 0){
-        $attStatus = "Goodbye";
-        header("Location:../index.php");
+        $question = generateChallange($dbc,$usrID);
+        if ($_SESSION["attRemain"] == 0) {
+            $attStatus = "Goodbye";
+            session_unset($_SESSION["attRemain"]);
+            header("Location:../../index.php");
         }
     }
-
-}elseif (isset($_SESSION["forgotID"])) {
+} elseif (isset($_SESSION["forgotID"])) {
+    //echo "<br>IN SESSION<br>";
     $_SESSION["attRemain"] = 3;
     $usrID = $_SESSION["forgotID"];
-    $SQS = "SELECT secqusOne,secansOne,secqueTwo,secansTwo,secqueThree,secansThree FROM User WHERE ID='$usrID'";
-    $result = mysqli_query($dbc, $SQS);
-    $row = mysqli_fetch_array($result);
-    generateChallange($row);
+    $question = generateChallange($dbc,$usrID);
 } else {
+    //echo "<br>IN ELSE<br>";
     echo "<h1>Go Away</h1>";
 }
 ?>
@@ -33,33 +45,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <head>
     <title>Online Store - Security Challange</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../../ui/online_store.css">
 </head>
+
 <body>
-    <h2>Security Question:</h2><br>
-    <p>Attempts Remain: <?php $attStatus?></p>
-    <p><?php echo $question;?></p>
-    <form>
-        <input type="text" value="usrans">
-        <input type="submit">
-    </form>
+    <?php include "guest_nav.php"; ?>
+    <div class="usrForm">
+        <p>Attempts Remain: <?php echo $attStatus ?></p>
+        <h2>Security Question:</h2>
+        <p><?php echo $question; ?></p><br>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <input type="text" name="usrans">
+            <input type="submit">
+        </form>
+    </div>
 </body>
+
 </html>
 <?php
-function generateChallange($row)
+function generateChallange($dbc,$usrID)
 {
+    $SQS = "SELECT secqusOne,secansOne,secqueTwo,secansTwo,secqueThree,secansThree FROM User WHERE ID='$usrID'";
+    $result = mysqli_query($dbc, $SQS);
+    $row = mysqli_fetch_array($result);
     $random = random_int(1, 3);
     if ($random == 1) {
         $question = $row["secqusOne"];
         $_SESSION["dbans"] = $row["secansOne"];
     }
     if ($random == 2) {
-        $question = $row["secqusTwo"];
+        $question = $row["secqueTwo"];
         $_SESSION["dbans"] = $row["secansTwo"];
     }
     if ($random == 3) {
-        $question = $row["secqusThree"];
+        $question = $row["secqueThree"];
         $_SESSION["dbans"] = $row["secansThree"];
     }
+    return $question;
 }
 ?>
