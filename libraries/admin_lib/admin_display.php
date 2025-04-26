@@ -38,12 +38,12 @@ function rowSellingItem($p_id, $ownerID, $pic, $name, $description, $price, $onh
     <tr>
     <th>" . $p_id . "</th>
     <th>" . $ownerID . "</th>
-    <th><img src='" . $pic . "' width='50px'></th>
+    <th><img src='../store/item_picture/" . $pic . "' width='50px'></th>
     <th>" . $name . "</th>
     <th>" . $description . "</th>
     <th>$" . $price . "</th>
     <th>" . $onhand . "</th>
-    <th><a href='../frontend/edit.php?did=" . $p_id . "'>Delete</a></th>
-    <th><a href='../frontend/delete.php?did=" . $p_id . "'>Delete</a></th>
+    <th><a href='../../libraries/edit_item.php?did=" . $p_id . "'>Edit</a></th>
+    <th><a href='../../libraries/delete_item.php?did=" . $p_id . "'>Delete</a></th>
     </tr>";
 }

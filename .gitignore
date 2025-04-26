@@ -1,1 +1,4 @@
 libraries/connectDB.php
+store/item_picture/
+.gitignore
+

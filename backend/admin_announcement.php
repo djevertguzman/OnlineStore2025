@@ -6,12 +6,12 @@ $success = "";
 $usrID = $_SESSION["ID"];
 if(checkAdmin($dbc)){
     //echo "Canary 1: PostArray:<br>";
-    print_r($_POST);
+    //print_r($_POST);
     if(isset($_POST["comment"])){
-        echo "Canary 2";
+        //echo "Canary 2";
         $comment = $_POST["comment"];
         $SIS = "INSERT INTO announcement(message) VALUES ('$comment') ";
-        echo "<br>SIS: ".$SIS."<br>";
+        //echo "<br>SIS: ".$SIS."<br>";
         $result = mysqli_query($dbc,$SIS);
         if($result = 1){
             $success = "<span class='success'><h2>Announcement Posted Successfully</h2></span>";

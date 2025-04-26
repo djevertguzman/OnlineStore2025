@@ -12,27 +12,28 @@ $result = mysqli_query($dbc, $SQS);
 $rowNum = mysqli_fetch_column($result);
 if (!$rowNum <= 5) {
     $success = "<span class='error>You have hit the maximum amount of listings available.<br> Delete some to continue.</span>'";
-    $flag = 1;
+    $flag = 0;
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //echo "in post";
     $itemName = test_input($_POST["itmName"]);
     $itemDescrip = test_input($_POST["itmDescrip"]);
     $itemPrice = test_input($_POST["itmPrice"]);
-    $itemPicture = test_input($_POST["itmPIC"]);
     $itemOnhand = test_input($_POST["itmONHAND"]);
     //print_r($_POST);
     //print_r($_FILES);
     //All of this is related to picture upload.
-    /*if (isset($_FILES["itmPIC"])) {
+    if (isset($_FILES["itmPIC"])) {
         //upload image
-        $tagName = "itemPIC";
+        $tagName = "itmPIC";
         $filesAllowed = "PNG:JPEG:JPG:GIF:BMP";
         $sizeAllowed = "10000000"; // about 10Mb
         $overWriteAllowed = 1;
         $picture = uploadFile($tagName, $filesAllowed, $sizeAllowed, $overWriteAllowed);
         if ($picture != false) {
             //display the image <img src = "fileName.extension">
-            $usrPIC = "<img src=" . $picture . " width='300px'>";
+            $flag = 2;
+            $usrPIC = "<img src='../store/item_picture/" . $picture . "' width='300px'>";
         } else {
             $itemPictureErr =  "Sorry, file upload of the image has failed.";
             $flag = 1;
@@ -40,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $itemPictureErr = "Picture of the item you are trying to sell is required.";
         $flag = 1;
-    }*/
+    }
     //End of picture upload.
     if (!isset($itemName)) {
         $itemNameErr = "Name of the item is required.";
@@ -59,7 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $flag = 1;
     }
     if ($flag == 0) {
-        $SIS = "INSERT INTO Item(owner_ID,p_name,p_description,p_price,p_onhand,p_picture) VALUES ($usrID,$itemName,$itemDescrip,$itemPrice,$itemOnhand,$picture)";
+        $SIS = "INSERT INTO Item(owner_ID,p_name,p_description,p_price,p_onhand) VALUES ('$usrID','$itemName','$itemDescrip','$itemPrice','$itemOnhand')";
+        //echo "SIS:".$SIS."<br>";
+        $insresult = mysqli_query($dbc, $SIS);
+        if ($insresult == 1) {
+            $success = "<span class='success'>Item Listed Successfully!</span>";
+        } else {
+            $success = "<span class='error'>Listing item failed, look at errors above or email support.</span>";
+        }
+    }
+    if ($flag == 2) {
+        $SIS = "INSERT INTO Item(owner_ID,p_name,p_description,p_price,p_onhand,p_picture) VALUES ('$usrID','$itemName','$itemDescrip','$itemPrice','$itemOnhand','$picture')";
+        //echo "<br>SIS:".$SIS."<br>";
         $insresult = mysqli_query($dbc, $SIS);
         if ($insresult == 1) {
             $success = "<span class='success'>Item Listed Successfully!</span>";
@@ -79,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include "../navigation/user_nav.php"; ?>
     <div class="usrForm">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
             Name: <input type="text" name="itmName" value="<?php echo $itemName; ?>"><span class="error"> * <?php echo $itemNameErr; ?></span><br><br>
             Description: <input type="text" name="itmDescrip" value="<?php echo $itemDescrip; ?>"><span class="error"> * <?php echo $itemDescripErr; ?></span><br><br>
             Price: <input type="text" name="itmPrice" value="<?php echo $itemPrice; ?>"><span class="error"> * <?php echo $itemPriceErr; ?></span><br><br>

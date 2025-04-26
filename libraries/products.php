@@ -11,7 +11,11 @@ function displayProduct($dbc, $cliorsell = 0, $sqs = "SELECT * FROM Item WHERE p
         <form action='" . $formPST . "' method='POST'>
         <table>";
         while ($row = mysqli_fetch_array($result)) {
-            rowItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
+            if(isset($_SESSION["ID"])){
+                rowItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
+            }else{
+                noAuthrowItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
+            }
         }
         echo "</table><input type = 'submit' name='submit' value='Add to Shopping Cart'></form>
     </div>
@@ -39,7 +43,20 @@ function rowItem($p_id, $pic, $name, $description, $price, $onhand)
     echo "
     <tr>
     <th>" . $p_id . "</th>
-    <th><img src='" . $pic . "' width='50px'></th>
+    <th><img src='../store/item_picture/" . $pic . "' width='50px'></th>
+    <th>" . $name . "</th>
+    <th>" . $description . "</th>
+    <th>$" . $price . "</th>
+    <th>" . $onhand . "</th>
+    <th><input type='checkbox' name='" . $p_id . "_select' value='" . $p_id . "'></td></th>
+    <th><input type='number' name='" . $p_id . "_amount' value='1'></th>
+    </tr>";
+}
+function noAuthrowItem($p_id, $pic, $name, $description, $price, $onhand){
+    echo "
+    <tr>
+    <th>" . $p_id . "</th>
+    <th><img src='./store/item_picture/" . $pic . "' width='50px'></th>
     <th>" . $name . "</th>
     <th>" . $description . "</th>
     <th>$" . $price . "</th>
@@ -53,7 +70,7 @@ function rowSellingItem($p_id, $pic, $name, $description, $price, $onhand)
     echo "
     <tr>
     <th>" . $p_id . "</th>
-    <th><img src='" . $pic . "' width='50px'></th>
+    <th><img src='../store/item_picture/" . $pic . "' width='50px'></th>
     <th>" . $name . "</th>
     <th>" . $description . "</th>
     <th>$" . $price . "</th>
@@ -110,6 +127,7 @@ function createCart($dbc)
         if (isset($_SESSION["ID"])) {
             $uid = $_SESSION["ID"];
             $SUS = "UPDATE cartUUID = '$UUID' WHERE ID='$uid'";
+            echo "<br>SUS:".$SUS."<br>";
             echo "Updating the UserDB with the cart made while in guest mode. SUS" . $SUS;
             mysqli_query($dbc, $SUS);
         }

@@ -11,7 +11,8 @@ function uploadFile($tagName, $filesAllowed, $sizeAllowed, $overWriteAllowed)
 {
     $uploadOK = 1;
     $dir = "../store/item_picture/";
-    $file = $dir . basename($_FILES[$tagName]["name"]);
+    $bname =  basename($_FILES[$tagName]["name"]);
+    $file = $dir . $bname;
     $fileType = pathinfo($file, PATHINFO_EXTENSION);
     $fileSize = $_FILES[$tagName]["size"];
     echo "File Size: " . $fileSize . " > Allowed Size: " . $sizeAllowed . "<br><br>";
@@ -35,7 +36,7 @@ function uploadFile($tagName, $filesAllowed, $sizeAllowed, $overWriteAllowed)
     }
 
     if ($uploadOK == 1) {
-        return $file;
+        return $bname;
     } else {
         return false;
     }
