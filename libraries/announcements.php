@@ -5,14 +5,17 @@ function renderAnnouncements($dbc){
     $result = mysqli_query($dbc,$SQS);
     echo "
     <div class='Announcments'>
-    <table>
+    <table border='1' cellpadding='5' cellspacing='0'>
+    <tr><th colspan='2'>Announcments!</th></tr>
     <tr>
-    <th>Announcments</th>
+        <th>Date Posted</th>
+        <th>Message</th>
     </tr>";
     while($row = mysqli_fetch_assoc($result)){
-        echo "<tr><th>Date Posted:</th><tr>";
-        echo "<tr><th>".$row["posted"]."</th><tr>";
-        echo "<tr><th>".$row["message"]."</th></tr>";
+        echo "<tr>
+                <td>" . htmlspecialchars($row["posted"]) . "</td>
+                <td>" . nl2br(htmlspecialchars($row["message"])) . "</td>
+              </tr>";
     }
     echo "</table>
     </div>";

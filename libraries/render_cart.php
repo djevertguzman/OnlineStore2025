@@ -59,7 +59,7 @@ function renderLine($cartLine, $itemID, $itemPicture, $itemName, $itemDescriptio
     echo "
     <tr>
     <th>" . $itemID . "</th>
-    <th><img src='" . $itemPicture . "' width='50px'></th>
+    <th><img src='../store/item_picture/" . $itemPicture . "' width='50px'></th>
     <th>" . $itemName . "</th>
     <th>" . $itemDescription . "</th>
     <th>$" . $itemPrice . "</th>

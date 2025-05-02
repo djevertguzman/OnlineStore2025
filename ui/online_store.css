@@ -84,3 +84,7 @@ body {
     margin-top: 7%;
     width: fit-content;
 }
+.Announcments td{
+    background-color: #D5C7BC;
+    color: black;
+}

@@ -15,7 +15,7 @@ $email = "example@example.com";
 $flag = 0; //no flag means ready to insert
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    print_r($_POST);
+    //print_r($_POST);
     $firstname = test_input($_POST["firstname"]);
     $lastname = test_input($_POST["lastname"]);
     $phone = test_input($_POST["phone"]);
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $password1 = password_hash($password1, PASSWORD_DEFAULT);
             $sis = "INSERT INTO User(firstname,lastname,phone,email,passwd,secqusOne,secansOne,secqueTwo,secansTwo,secqueThree,secansThree) 
         VALUES ('$firstname','$lastname','$phone','$email','$password1','$securityQOne','$securityAOne','$securityQTwo','$securityATwo','$securityQThree','$securityAThree')";
-            echo "SIS: ".$sis;
+            //echo "SIS: ".$sis;
             mysqli_query($dbc, $sis);
             //$regcompl = mysqli_affected_rows($dbc);
             //echo $regcompl . " User information has been stored sucessfully!";
@@ -146,19 +146,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit">
     </form>
     </div>
-    <?php
-    //echo "<hr><h3>Testing Area: For Developer Only </h3>";
-    //echo "Data collected from the form: <br>";
-    //echo "<br> First name: " . $firstname;
-    //echo "<br>Last name: " . $lastname;
-    //echo "<br> email: " . $email;
-    //echo "<br> password1: " . $password1;
-    //echo "<br> password2: " . $password2;
-    //echo "<br> Phone: " . $phone;
-    //echo "<br> gender: " . $gender;
-    //echo "<br> Level: " . $level;
-    //echo "<br> Submit Flag: " . $flag;
-    ?>
 </body>
 
 </html>

@@ -13,7 +13,6 @@ $usrID = $_SESSION["ID"];
     <body>
         <?php 
         include "../navigation/admin_nav.php";
-        displayUsers($dbc);
         if(checkAdmin($dbc,$usrID)){
             displayUsers($dbc);
         }else{

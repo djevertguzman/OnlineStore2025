@@ -1,7 +1,6 @@
 <?php
 function displayUsers($dbc,$sqs = "SELECT * FROM User"){
     $result = mysqli_query($dbc, $sqs);
-    $rowCount = mysqli_num_rows($result);
     echo "
         <div class= 'productTable'>
         <table>

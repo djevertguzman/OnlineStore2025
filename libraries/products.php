@@ -10,28 +10,48 @@ function displayProduct($dbc, $cliorsell = 0, $sqs = "SELECT * FROM Item WHERE p
         <div class= 'productTable'>
         <form action='" . $formPST . "' method='POST'>
         <table>";
+        if (isset($_SESSION["ID"])) {
+            echo "<tr>
+    <th>Item#</th>
+    <th>Picture</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Onhand</th>
+    <th>Select</th>
+    <th>Quantity</th>";
+        } else {
+            echo "<tr>
+    <th>Item#</th>
+    <th>Picture</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Onhand</th>";
+        }
         while ($row = mysqli_fetch_array($result)) {
-            if(isset($_SESSION["ID"])){
+            if (isset($_SESSION["ID"])) {
                 rowItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
-            }else{
+            } else {
                 noAuthrowItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
             }
         }
-        echo "</table><input type = 'submit' name='submit' value='Add to Shopping Cart'></form>
-    </div>
-    ";
+        if (isset($_SESSION["ID"])) {
+            echo "</table><input type = 'submit' name='submit' value='Add to Shopping Cart'></form>";
+        }
+        echo "</div>";
     } else {
-        if($rowCount != 0){
-        echo "
+        if ($rowCount != 0) {
+            echo "
         <div class= 'productTable'>
         <table>";
-        while ($row = mysqli_fetch_array($result)) {
-            rowSellingItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
-        }
-        echo "</table>
+            while ($row = mysqli_fetch_array($result)) {
+                rowSellingItem($row["item_id"], $row["p_picture"], $row["p_name"], $row["p_description"], $row["p_price"], $row["p_onhand"]);
+            }
+            echo "</table>
     </div>
     ";
-        }else{
+        } else {
             echo "<div class= 'productTable'>";
             echo "<h2> You have no items listed, add some so that they appear here.</h2>";
             echo "</div>";
@@ -52,7 +72,8 @@ function rowItem($p_id, $pic, $name, $description, $price, $onhand)
     <th><input type='number' name='" . $p_id . "_amount' value='1'></th>
     </tr>";
 }
-function noAuthrowItem($p_id, $pic, $name, $description, $price, $onhand){
+function noAuthrowItem($p_id, $pic, $name, $description, $price, $onhand)
+{
     echo "
     <tr>
     <th>" . $p_id . "</th>
@@ -61,8 +82,6 @@ function noAuthrowItem($p_id, $pic, $name, $description, $price, $onhand){
     <th>" . $description . "</th>
     <th>$" . $price . "</th>
     <th>" . $onhand . "</th>
-    <th><input type='checkbox' name='" . $p_id . "_select' value='" . $p_id . "'></td></th>
-    <th><input type='number' name='" . $p_id . "_amount' value='1'></th>
     </tr>";
 }
 function rowSellingItem($p_id, $pic, $name, $description, $price, $onhand)
@@ -75,7 +94,7 @@ function rowSellingItem($p_id, $pic, $name, $description, $price, $onhand)
     <th>" . $description . "</th>
     <th>$" . $price . "</th>
     <th>" . $onhand . "</th>
-    <th><a href='../frontend/delete.php?did=".$p_id."'></a>Delete</th>
+    <th><a href='../frontend/delete.php?did=" . $p_id . "'></a>Delete</th>
     </tr>";
 }
 function shoppingCart($dbc, $pstARRAY, $usrID = null)
@@ -127,7 +146,7 @@ function createCart($dbc)
         if (isset($_SESSION["ID"])) {
             $uid = $_SESSION["ID"];
             $SUS = "UPDATE cartUUID = '$UUID' WHERE ID='$uid'";
-            echo "<br>SUS:".$SUS."<br>";
+            echo "<br>SUS:" . $SUS . "<br>";
             echo "Updating the UserDB with the cart made while in guest mode. SUS" . $SUS;
             mysqli_query($dbc, $SUS);
         }

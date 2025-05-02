@@ -15,7 +15,7 @@ function uploadFile($tagName, $filesAllowed, $sizeAllowed, $overWriteAllowed)
     $file = $dir . $bname;
     $fileType = pathinfo($file, PATHINFO_EXTENSION);
     $fileSize = $_FILES[$tagName]["size"];
-    echo "File Size: " . $fileSize . " > Allowed Size: " . $sizeAllowed . "<br><br>";
+    //echo "File Size: " . $fileSize . " > Allowed Size: " . $sizeAllowed . "<br><br>";
     if ($fileSize >  $sizeAllowed) {
         echo "File size is too big, Maxmium 10Mb allowed. <br>";
         $uploadOK = 0;

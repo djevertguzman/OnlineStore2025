@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["itmPIC"])) {
         //upload image
         $tagName = "itmPIC";
-        $filesAllowed = "PNG:JPEG:JPG:GIF:BMP";
+        $filesAllowed = "PNG:JPEG:JPG:GIF:BMP:WEBP";
         $sizeAllowed = "10000000"; // about 10Mb
         $overWriteAllowed = 1;
         $picture = uploadFile($tagName, $filesAllowed, $sizeAllowed, $overWriteAllowed);
