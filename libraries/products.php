@@ -12,22 +12,22 @@ function displayProduct($dbc, $cliorsell = 0, $sqs = "SELECT * FROM Item WHERE p
         <table>";
         if (isset($_SESSION["ID"])) {
             echo "<tr>
-    <th>Item#</th>
-    <th>Picture</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Onhand</th>
-    <th>Select</th>
-    <th>Quantity</th>";
+            <th>Item#</th>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Onhand</th>
+            <th>Select</th>
+            <th>Quantity</th>";
         } else {
             echo "<tr>
-    <th>Item#</th>
-    <th>Picture</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Onhand</th>";
+            <th>Item#</th>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Onhand</th>";
         }
         while ($row = mysqli_fetch_array($result)) {
             if (isset($_SESSION["ID"])) {
