@@ -1,6 +1,7 @@
 <?php
 require "../../../OnlineStore/libraries/connectDB.php";
 require "../../../OnlineStore/libraries/input_sanitization.php";
+require "../../../OnlineStore/libraries/changeStyle.php";
 session_start();
 $passwordErr = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <title>Online Store - Change Password</title>
-    <link rel="stylesheet" href="../../ui/online_store.css">
+    <link rel="stylesheet" href="../../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

@@ -1,8 +1,8 @@
+<?php require "../../../OnlineStore/libraries/changeStyle.php";?>
 <html>
-
 <head>
     <title>Online Store - Password Change Successful</title>
-    <link rel="stylesheet" href="../../ui/online_store.css">
+    <link rel="stylesheet" href="../../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

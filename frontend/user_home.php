@@ -1,14 +1,17 @@
 <?php
 require "../libraries/connectDB.php";
 include "../libraries/announcements.php";
+require "../libraries/changeStyle.php";
 session_start();
-
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 ?>
 <html>
 
 <head>
     <title>Online Store - User Home</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

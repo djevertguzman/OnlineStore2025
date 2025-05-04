@@ -1,10 +1,11 @@
 <?php
 session_start();
+require "../libraries/changeStyle.php";
 ?>
 <html>
     <head>
         <title>Online Store - Registration Success!!</title>
-        <link rel="stylesheet" href="../ui/online_store.css">
+        <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
     </head>
     <body>
         <?php include "./guest_nav.php"; ?>

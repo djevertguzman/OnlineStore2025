@@ -3,7 +3,11 @@ require "../libraries/connectDB.php";
 require "../user_auth/admin_lib/admin_chk.php";
 require "../libraries/admin_lib/admin_transact.php";
 require "../libraries/input_sanitization.php";
+require "../libraries/changeStyle.php";
 session_start();
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 $usrID = $_SESSION["ID"];
 $range = "";
 $sqs = "";
@@ -51,7 +55,7 @@ if (checkAdmin($dbc, $usrID)) {
 
 <head>
     <title>Online Store - Admin Transactions</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

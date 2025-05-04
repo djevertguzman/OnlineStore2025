@@ -1,5 +1,6 @@
 <?php
 include "../user_auth/admin_lib/admin_chk.php";
+$specialChar = htmlspecialchars($_SERVER["PHP_SELF"]);
 echo "
 <div class='headerbar'>
 <h2>Student Online Store</h2>
@@ -15,7 +16,9 @@ echo "
 if(checkAdmin($dbc,$_SESSION["ID"]) == true){
     echo "<th><a href='../backend/admin_home.php' alt='Return to admin mode'>Admin Mode</a></th>";
 }
-echo "<th><a href='../user_auth/logoff.php' alt='Logoff'>Logoff</a></th>
+echo "
+<th><form action='".$specialChar."' method='POST'><input type='submit' name='chaLight' value='Light Mode' class='light-button'></form></th>
+<th><a href='../user_auth/logoff.php' alt='Logoff'>Logoff</a></th>
 </tr>
 </table>
 </div>

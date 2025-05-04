@@ -2,7 +2,11 @@
 require "../../libraries/connectDB.php";
 require "../../libraries/input_sanitization.php";
 require "../../user_auth/admin_lib/admin_chk.php";
+require "../../libraries/changeStyle.php";
 session_start();
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 //Defining the varibles for the errors.
 $firstnameErr = $lastnameErr = $phoneErr = $emailErr =
     $levelErr = $genderErr = $passwordErr = $currPassErr = "";
@@ -137,7 +141,7 @@ if (checkAdmin($dbc)) {
 
 <head>
     <title>Online Store - Admin Profile Edit</title>
-    <link rel="stylesheet" href="../../ui/online_store.css">
+    <link rel="stylesheet" href="../../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

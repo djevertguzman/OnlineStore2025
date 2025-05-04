@@ -1,6 +1,7 @@
 <?php
 require "../libraries/connectDB.php";
 require "../libraries/input_sanitization.php";
+require "../libraries/changeStyle.php";
 session_start();
 $email = $emailErr = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
     <head>
         <title>Online Store - Templete</title>
-        <link rel="stylesheet" href="../ui/online_store.css">
+        <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
     </head>
     <body>
         <?php include "guest_nav.php";?>

@@ -1,6 +1,10 @@
 <?php
 require "../libraries/connectDB.php";
+require "../libraries/changeStyle.php";
 session_start();
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 $usrID = $_SESSION["ID"];
 $orderStatus = "";
 //print_r($_SESSION);
@@ -61,7 +65,7 @@ if(isset($_POST["purchase"])){
 
 <head>
     <title>Online Store - Shopping Cart</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

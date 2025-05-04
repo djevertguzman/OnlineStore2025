@@ -1,7 +1,12 @@
 <?php
 require "../../../OnlineStore/libraries/connectDB.php";
 require "../../../OnlineStore/user_auth/admin_lib/admin_chk.php";
+require "../../../OnlineStore/libraries/changeStyle.php";
+
 session_start();
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 $success = "";
 if(isset($_POST["fate"])){
     if($_POST["fate"] == "Yes"){
@@ -16,7 +21,7 @@ if(isset($_POST["fate"])){
             $success = "<span class='error'><h2>User ".$judgement." Successfully Deleted</h2></span>'";
         }
     }else{
-        header("Location: ../../../backend/admin_users.php");
+        header("Location: ../../backend/admin_users.php");
     }
 
 }
@@ -24,7 +29,7 @@ if(isset($_POST["fate"])){
 <html>
     <head>
         <title>Online Store - Admin Delete User</title>
-        <link rel="stylesheet" href="../../ui/online_store.css">
+        <link rel="stylesheet" href="../../ui/<?php echo retriveStyle();?>">
     </head>
     <body>
         <?php

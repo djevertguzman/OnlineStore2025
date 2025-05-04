@@ -2,6 +2,7 @@
 session_start();
 require "../libraries/connectDB.php";
 require "../libraries/input_sanitization.php";
+require "../libraries/changeStyle.php";
 $expire  = time() + 60 * 60; //Settting cookie expiration time to 1 hour.
 require_once "../libraries/user_auth.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <title>Online Store - Login</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

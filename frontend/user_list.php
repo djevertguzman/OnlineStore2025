@@ -2,7 +2,11 @@
 require "../libraries/connectDB.php";
 require "../libraries/input_sanitization.php";
 include "../libraries/products.php";
+require "../libraries/changeStyle.php";
 session_start();
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 $itemName = $itemDescrip = $itemPrice = $itemPicture = $itemOnhand = $usrPIC = $picture = "";
 $itemNameErr = $itemDescripErr = $itemPriceErr = $itemPictureErr = $itemOnhandErr = $success = "";
 $usrID = $_SESSION["ID"];
@@ -85,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <title>Online Store - List an Item For Sell</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

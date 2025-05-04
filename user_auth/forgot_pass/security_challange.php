@@ -1,6 +1,7 @@
 <?php
 require "../../../OnlineStore/libraries/connectDB.php";
 require "../../../OnlineStore/libraries/input_sanitization.php";
+require "../../../OnlineStore/libraries/changeStyle.php";
 session_start();
 $question = $answer = "";
 if (isset($_SESSION["attRemain"])) {
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <title>Online Store - Security Challange</title>
-    <link rel="stylesheet" href="../../ui/online_store.css">
+    <link rel="stylesheet" href="../../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>

@@ -8,7 +8,7 @@ echo "
 <tr>
 <th><a href='./index.php' alt='Main Home'>Home</a></th>
 <th><a href='./index.php' alt='Product Page'>Products</th>
-<th><form action='".$specialChar."' method='POST'><input type='submit' name='chaLight' value='chaLight' class='light-button'></form></th>
+<th><form action='".$specialChar."' method='POST'><input type='submit' name='chaLight' value='Light Mode' class='light-button'></form></th>
 <th><a href='./user_auth/login.php' alt='Login Page'>Login</a></th>
 </tr>
 </table>

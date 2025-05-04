@@ -1,6 +1,7 @@
 <?php
 //Defining need librarys.
 require "../libraries/input_sanitization.php";
+require "../libraries/changeStyle.php";
 //Defining the varibles for the errors.
 $firstnameErr = $lastnameErr = $phoneErr = $emailErr =
     $levelErr = $genderErr = $passwordErr = "";
@@ -112,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <title>Online Store - User Registration</title>
-        <link rel="stylesheet" href="../ui/online_store.css">
+        <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
         <style>
             .error {
                 color: #FF0000;

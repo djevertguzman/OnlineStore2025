@@ -1,9 +1,13 @@
 <?php
 require "../libraries/connectDB.php";
 require "../user_auth/admin_lib/admin_chk.php";
+require "../libraries/changeStyle.php";
 session_start();
 $success = "";
 $usrID = $_SESSION["ID"];
+if(isset($_POST["chaLight"])){
+    changeStyle();
+}
 if(checkAdmin($dbc)){
     //echo "Canary 1: PostArray:<br>";
     //print_r($_POST);
@@ -26,7 +30,7 @@ if(checkAdmin($dbc)){
 
 <head>
     <title>Online Store - Admin Home</title>
-    <link rel="stylesheet" href="../ui/online_store.css">
+    <link rel="stylesheet" href="../ui/<?php echo retriveStyle();?>">
 </head>
 
 <body>
