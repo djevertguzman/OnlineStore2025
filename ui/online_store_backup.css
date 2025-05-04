@@ -73,7 +73,7 @@
 }
 
 body {
-    background-color: #654F6F;
+    background-color: #FFFFFF;
     color: white;
 }
 
@@ -84,21 +84,7 @@ body {
     margin-top: 7%;
     width: fit-content;
 }
-
-.Announcments td {
+.Announcments td{
     background-color: #D5C7BC;
     color: black;
-}
-
-.light-button {
-    background: none;
-    border: none;
-    color: #00f;
-    text-decoration: underline;
-    cursor: pointer;
-    font: inherit;
-    padding: 0;
-    margin-top: 15px;
-    vertical-align: baseline;
-    line-height: inherit;
 }

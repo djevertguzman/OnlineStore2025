@@ -5,13 +5,13 @@
 }
 
 .navbar table th {
-    background-color: #D5C7BC;
+    background-color: #A9A9A9;
     padding: 10px;
 }
 
 .headerbar {
     font-family: Arial;
-    background-color: #93B7BE;
+    background-color: #888888;
     text-align: center;
     padding: 10px;
 }
@@ -24,15 +24,17 @@
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
+    border: 2px solid #33FF00; /* Border around the whole table */
+    border-collapse: collapse;
 }
 
 .productTable h2 {
     text-align: center;
 }
 
-.productTable table th {
-    background-color: #F1FFFA;
-    color: black;
+.productTable table th{
+    background-color: #000000;
+    color: #33FF00;
     padding: 10px;
 }
 
@@ -49,8 +51,8 @@
 }
 
 .textArea table th {
-    background-color: #F1FFFA;
-    color: black;
+    background-color: #000000;
+    color: #33FF00;
     padding: 10px;
 }
 
@@ -58,8 +60,8 @@
     margin-top: 2%;
     margin-left: 20%;
     margin-right: 20%;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: #33FF00;
     padding: 40px;
     border: 1px solid black;
 }
@@ -73,8 +75,8 @@
 }
 
 body {
-    background-color: #654F6F;
-    color: white;
+    background-color: #000000;
+    color: #33FF00;
 }
 
 .usrLogin {
@@ -84,12 +86,10 @@ body {
     margin-top: 7%;
     width: fit-content;
 }
-
-.Announcments td {
-    background-color: #D5C7BC;
-    color: black;
+.Announcments table th td{
+    background-color: #000000;
+    color: #33FF00;
 }
-
 .light-button {
     background: none;
     border: none;

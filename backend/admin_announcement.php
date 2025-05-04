@@ -33,7 +33,7 @@ if(checkAdmin($dbc)){
     <?php include "../navigation/admin_nav.php"; ?>
     <div class="usrForm">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="usrform">
-            Post Announcement: <br><textarea name="comment" form="usrform">Enter text here...</textarea><br>
+            Post Announcement: <br><br><textarea rows="4" cols="40" name="comment" form="usrform">Enter text here...</textarea><br><br>
             <input type="submit" value="submit"><?php echo $success?>
         </form>
     </div>
